@@ -19,20 +19,20 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
       child: Drawer(
         child: ListView(
           children: [
-            UserAccountsDrawerHeader(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/head/slider.png'),
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              // accountName: Text(_datas['Pr'].toString()),
-              accountName: Text("Prenom & Nom"),
-              accountEmail: Text("Numero Telephone"),
-            ),
+            // UserAccountsDrawerHeader(
+            //   decoration: const BoxDecoration(
+            //     image: DecorationImage(
+            //       image: AssetImage('assets/images/head/slider.png'),
+            //       fit: BoxFit.fitWidth,
+            //     ),
+            //   ),
+            //   // accountName: Text(_datas['Pr'].toString()),
+            //   accountName: Text("Prenom & Nom"),
+            //   accountEmail: Text("Numero Telephone"),
+            // ),
             Card(
               child: ListTile(
-                title: Text(
+                title: const Text(
                   'Accueil',
                 ),
                 leading: const Icon(
@@ -48,7 +48,7 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
             ),
             Card(
               child: ListTile(
-                title: Text(
+                title: const Text(
                   "Partager l'app",
                 ),
                 leading: const Icon(
@@ -62,7 +62,7 @@ class _CustomNavigationDrawerState extends State<CustomNavigationDrawer> {
             ),
             Card(
               child: ListTile(
-                title: Text(
+                title: const Text(
                   "Se déconnecter",
                 ),
                 leading: const Icon(

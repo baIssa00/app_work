@@ -1,3 +1,5 @@
+import 'package:app_work/auth/sign_in.screen.dart';
+import 'package:app_work/home/home.screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,11 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       initialRoute: '/',
       routes: {
-        // HomeScreen.routeName: (context) => const HomeScreen(),
-        // CategorieScreen.routeName: (context) => const CategorieScreen(),
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        SignInScreen.routeName: (context) => const SignInScreen(),
         // LibraryScreen.routeName: (context) => const LibraryScreen(),
         // ProfileScreen.routeName: (context) => const ProfileScreen(),
       },
