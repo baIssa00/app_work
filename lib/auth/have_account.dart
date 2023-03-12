@@ -20,14 +20,20 @@ class HaveAnAccount extends StatelessWidget {
           login
               ? "Vous n'avez pas de compte ? "
               : "Vous avez déjà un compte ? ",
-          style: GoogleFonts.cuprum(color: cprimary),
+          style: GoogleFonts.roboto(
+              color: Colors.black.withOpacity(0.6),
+              fontSize: 16,
+              fontWeight: FontWeight.w600),
         ),
         GestureDetector(
           onTap: press,
           child: Text(
             login ? "S'inscrire" : "Se Connecter",
-            style: GoogleFonts.cuprum(
-                color: cprimary, fontWeight: FontWeight.bold),
+            style: GoogleFonts.roboto(
+              color: cblack,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
           ),
         ),
       ],

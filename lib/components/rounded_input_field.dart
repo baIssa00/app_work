@@ -11,19 +11,24 @@ class RoundedInputField extends StatelessWidget {
     required this.onChanged,
     required this.textController,
     required this.inputFormatters,
+    required this.label,
   }) : super(key: key);
   final String hintext;
   final IconData icon;
+  final String label;
   final ValueChanged<String> onChanged;
   final TextEditingController textController;
   final List<TextInputFormatter> inputFormatters;
 
   @override
   Widget build(BuildContext context) {
-    return TextFieldContainer(
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      width: size.width,
       child: TextFormField(
         controller: textController,
-        // The validator receives the text that the user has entered.
+        keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Le champ ne peut pas être une chaîne vide';
@@ -32,38 +37,26 @@ class RoundedInputField extends StatelessWidget {
         },
         inputFormatters: inputFormatters,
         onChanged: onChanged,
-        style: GoogleFonts.belleza(
-          color: cprimary,
+        style: GoogleFonts.roboto(
+          color: cblack.withOpacity(0.8),
+          fontSize: 19,
+          fontWeight: FontWeight.w600,
         ),
         decoration: InputDecoration(
-          icon: Icon(
-            icon,
-            color: cprimary,
-          ),
           hintText: hintext,
-          hintStyle: GoogleFonts.belleza(color: cprimary, fontSize: 16),
-          border: const UnderlineInputBorder(),
+          labelText: label,
+          border: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  color: Color.fromARGB(255, 199, 192, 192), width: 0.4),
+              borderRadius: BorderRadius.circular(15)),
+          filled: true,
+          fillColor: cwhite,
+          prefixIcon: Icon(
+            icon,
+            color: cgrey,
+          ),
         ),
       ),
     );
-  }
-}
-
-class TextFieldContainer extends StatelessWidget {
-  const TextFieldContainer({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-  final Widget child;
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-        // margin: const EdgeInsets.symmetric(vertical: ),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-        width: size.width * 0.7,
-        // decoration: BoxDecoration(
-        //     color: kthird, borderRadius: BorderRadius.circular(29),),
-        child: child);
   }
 }

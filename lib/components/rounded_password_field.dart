@@ -20,8 +20,11 @@ class RoundedPasswordField extends StatefulWidget {
 class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     var obscureText = true;
-    return PasswordFieldContainer(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      width: size.width,
       child: TextFormField(
         controller: widget.passwordController,
         // The validator receives the text that the user has entered.
@@ -35,21 +38,28 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
         },
         obscureText: obscureText,
         onChanged: widget.onChanged,
-        style: const TextStyle(
-          color: cprimary,
+        style: GoogleFonts.roboto(
+          color: cblack.withOpacity(0.8),
+          fontSize: 19,
+          fontWeight: FontWeight.w600,
         ),
         decoration: InputDecoration(
-          icon: const Icon(
-            Icons.lock,
-            color: cprimary,
+          prefixIcon: const Icon(
+            Icons.lock_outline,
+            color: cgrey,
           ),
+          fillColor: cwhite,
           hintText: widget.hintext,
-          hintStyle: GoogleFonts.belleza(color: cprimary, fontSize: 16),
-          border: const UnderlineInputBorder(),
+          labelText: 'Mot de passe',
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(
+                color: Color.fromARGB(255, 199, 192, 192), width: 0.4),
+            borderRadius: BorderRadius.circular(15),
+          ),
           suffixIcon: IconButton(
             icon: const Icon(
-              Icons.visibility,
-              color: cprimary,
+              Icons.visibility_outlined,
+              color: cgrey,
             ),
             onPressed: () {
               setState(() {
@@ -60,24 +70,5 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
         ),
       ),
     );
-  }
-}
-
-class PasswordFieldContainer extends StatelessWidget {
-  const PasswordFieldContainer({
-    Key? key,
-    required this.child,
-  }) : super(key: key);
-  final Widget child;
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-        // margin: const EdgeInsets.symmetric(vertical: 5),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        width: size.width * 0.7,
-        // decoration: BoxDecoration(
-        //     color: kthird, borderRadius: BorderRadius.circular(29)),
-        child: child);
   }
 }
